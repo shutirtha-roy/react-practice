@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+        .container {
+            width: 400px;
+            border: 1px solid gray;
+            padding: 20px;
+            box-shadow: 2px 2px 2px black;
+        }
+    </style>
+    <script src="../node_modules/react/umd/react.development.js"></script>
+    <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
+    <script src="../node_modules/@babel/standalone/babel.js"></script>
+    <script type="text/babel">
+
+        function SearchBar() {
+            return(
+                <div align="center" className="container">
+                    <input type="text" placeholder="Test Project" />
+                    <button>Search</button>
+                </div>
+            )
+        }
+
+        ReactDOM.render(<div><SearchBar></SearchBar> <br/> <SearchBar/> </div>, document.getElementById("root"));
+    </script>
 </head>
 <body>
     <noscript>Please enter Javascript on your browser.</noscript>
