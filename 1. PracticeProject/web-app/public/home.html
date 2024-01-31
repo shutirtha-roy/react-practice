@@ -5,28 +5,111 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <style>
-        .container {
-            width: 400px;
-            border: 1px solid gray;
-            padding: 20px;
-            box-shadow: 2px 2px 2px black;
+        .bg-banner {
+            background-image: url("banner.jpg");
+            background-size: cover;
+            height: 100vh;
+        }
+        .bg-shade {
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 100vh;
+        }
+        .brand-title {
+            font-size: 30px;
+            font-family: Arial;
+            color: red;
+            font-weight: bold;
+        }
+        section {
+            padding-top: 150px;
+        }
+        .main-title {
+            font-size: 30px;
+            font-weight: bold;
+            font-family: Arial;
+            margin-bottom: 20px;
+        }
+        .main-subtitle {
+            font-size: 20px;
+            font-family: Arial;
+        }
+        form {
+            width: 600px;
+            margin-left: 150px;
+            margin-top: 20px;
         }
     </style>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <script src="../node_modules/react/umd/react.development.js"></script>
     <script src="../node_modules/react-dom/umd/react-dom.development.js"></script>
     <script src="../node_modules/@babel/standalone/babel.js"></script>
     <script type="text/babel">
-
-        function SearchBar() {
+        
+        function NetflixIndex() {
             return(
-                <div align="center" className="container">
-                    <input type="text" placeholder="Test Project" />
-                    <button>Search</button>
+                <div className="bg-banner">
+                    <div className="bg-shade">
+                        <NetflixHeader />
+                        <section className="text-white text-center">
+                            <NetflixMain />
+                        </section>
+                    </div>
                 </div>
             )
         }
 
-        ReactDOM.render(<div><SearchBar></SearchBar> <br/> <SearchBar/> </div>, document.getElementById("root"));
+        function NetflixHeader() {
+            return(
+                <header className="d-flex justify-content-between p-4">
+                    <div>
+                        <span className="brand-title">NETFLIX</span>
+                    </div>
+                    <div>
+                        <div className="input-group">
+                            <span className="bi bi-translate input-group-text"></span>
+                            <select className="form-select">
+                                <option>Language</option>
+                            </select>
+                            <button className="btn btn-danger">Signin</button>
+                        </div>
+                    </div>
+                </header>
+            )
+        }
+
+        function NetflixMain() {
+            return(
+                <main>
+                    <div className="d-flex justify-content-center">
+                        <div>
+                            <div className="main-title">Unlimited movies, TV shows and more.</div>
+                            <div className="main-subtitle">Watch anywhere. Cancel anytime.</div>
+                            <NetflixRegister />
+                        </div>
+                    </div>
+                </main>
+            )
+        }
+        
+        function NetflixRegister() {
+            return(
+                <form>
+                    <p>Ready to watch? Enter your email to create or restart your membership.</p>
+                    <div>
+                        <div className="input-group input-group-lg">
+                            <input type="email" placeholder="Your email address" />
+                            <button className="btn btn-danger">
+                                Get Started <span className="bi bi-chevron-right"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            )
+        }
+
+        ReactDOM.render(<NetflixIndex />, document.getElementById("root"));
+
     </script>
 </head>
 <body>
