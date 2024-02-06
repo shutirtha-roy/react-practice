@@ -5,15 +5,19 @@ export function DataBinding() {
     const [product, setProduct] = useState({title: '', rating:{rate: 0, ratings: 0, reviews: 0}, price:0, offers: [], image: ''});
 
     function LoadProduct() {
-        var http = new XMLHttpRequest();
-        http.open("get", "product.json", true);
-        http.send();
-
-        http.onreadystatechange = function() {
-            if(http.readyState === 4) {
-                setProduct(JSON.parse(http.responseText));
-            }
-        }
+        fetch("product.json")
+        .then((response)=>{
+            return response.json();
+        })
+        .then(product => {
+            setProduct(product);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            console.log(`Request Completed`);
+        })
     }
 
     useEffect(() => {
