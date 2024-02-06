@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
+import $ from "jquery";
 
 export function DataBinding() {
 
     const [product, setProduct] = useState({title: '', rating:{rate: 0, ratings: 0, reviews: 0}, price:0, offers: [], image: ''});
 
     function LoadProduct() {
-        fetch("product.json")
-        .then((response)=>{
-            return response.json();
-        })
-        .then(product => {
-            setProduct(product);
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-        .finally(() => {
-            console.log(`Request Completed`);
+        $.ajax({
+            method: "get",
+            url: "product.json",
+            success: (response) => {
+                setProduct(response);
+            },
+            error: (ex) => { 
+                console.log(ex);
+            }
         })
     }
 

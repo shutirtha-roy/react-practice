@@ -8,6 +8,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import * as bootstrap from "bootstrap";
 import { DataBinding } from './components/data-binding/data-binding';
+import $ from "jquery";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
