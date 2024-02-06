@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
-import $ from "jquery";
+//import $ from "jquery";
+import axios from "axios";
 
 export function DataBinding() {
 
     const [product, setProduct] = useState({title: '', rating:{rate: 0, ratings: 0, reviews: 0}, price:0, offers: [], image: ''});
 
     function LoadProduct() {
-        $.ajax({
-            method: "get",
-            url: "product.json",
-            success: (response) => {
-                setProduct(response);
-            },
-            error: (ex) => { 
-                console.log(ex);
-            }
-        })
+        axios.get("product.json").then((response) => {
+            console.log(response);
+            setProduct(response.data);
+        }).catch((ex) => {
+            console.log(ex)
+        });
     }
 
     useEffect(() => {
