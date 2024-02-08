@@ -1,17 +1,18 @@
 import { useState } from "react";
+import "./style-demo.css";
 
 export function StyleDemo() {
 
-    const [nameError, setNameError] = useState({ display: 'block', color: 'red'});
-    const [elementColor, setElementColor] = useState({ border: '1px solid red'});
+    const [nameError, setNameError] = useState('');
+    const [required, setRequired] = useState('d-block text-danger');
 
     function handleNameChange(e) {
         if(e.target.value == "") {
-            setNameError({ display: 'block', color: 'red' });
-            setElementColor({ border: '1px solid red' });
+            setNameError('invalid-style');
+            setRequired('d-block text-danger');
         } else {
-            setNameError({ display: 'none'});
-            setElementColor({ border: '1px solid green' });
+            setNameError('valid-style');
+            setRequired('d-none');
         }
     }
 
@@ -19,8 +20,8 @@ export function StyleDemo() {
         <div className="container-fluid">
             <dl>
                 <dt>User Name</dt>
-                <dd><input type="text"  style={elementColor} onChange={handleNameChange} /></dd>
-                <dd style={nameError}>Name Required</dd>
+                <dd><input type="text"  className={nameError} onChange={handleNameChange} /></dd>
+                <dd className={required}>Name Required</dd>
             </dl>
         </div>
     )
