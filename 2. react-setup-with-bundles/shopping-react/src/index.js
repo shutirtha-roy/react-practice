@@ -9,11 +9,14 @@ import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import * as bootstrap from "bootstrap";
 import { DataBinding } from './components/data-binding/data-binding';
 import $ from "jquery";
+import { NasaAPI } from './components/nasa-api/nasa-api';
+import { TwoWayBinding } from './components/two-way-binding/two-way-binding';
+import { StyleDemo } from './components/style-demp/style-demo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DataBinding />
+    <StyleDemo />
   </React.StrictMode>
 );
 
