@@ -3,26 +3,25 @@ import "./style-demo.css";
 
 export function StyleDemo() {
 
-    const [nameError, setNameError] = useState('');
-    const [required, setRequired] = useState('d-block text-danger');
+    const [theme, setTheme] = useState('bg-light text-dark');
+    const [btnStyle, setBtnStyle] = useState('btn btn-dark w-100');
 
-    function handleNameChange(e) {
-        if(e.target.value == "") {
-            setNameError('invalid-style');
-            setRequired('d-block text-danger');
+    function ThemeChange(e) {
+        if (e.target.checked) {
+            setTheme('bg-dark text-white');
+            setBtnStyle('btn btn-light w-100');
         } else {
-            setNameError('valid-style');
-            setRequired('d-none');
+            setTheme('bg-light text-dark');
+            setBtnStyle('btn btn-light w-100');
         }
     }
 
     return(
-        <div className="container-fluid">
-            <dl>
-                <dt>User Name</dt>
-                <dd><input type="text"  className={nameError} onChange={handleNameChange} /></dd>
-                <dd className={required}>Name Required</dd>
-            </dl>
+        <div className="container-fluid d-flex justify-content-center align-items-center">
+            <div className="box">
+                Normal Text
+                <h1 style={{border:'inherit', padding: 'inherit'}}>Welcome to React</h1>
+            </div>
         </div>
     )
 }

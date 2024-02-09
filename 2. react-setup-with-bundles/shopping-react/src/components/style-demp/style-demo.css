@@ -1,12 +1,5 @@
-
-.valid-style {
-    border: 1px solid green;
-    box-shadow: 2px 2px 2px green;
-    outline: none;
-}
-
-.invalid-style {
-    border: 1px solid red;
-    box-shadow: 2px 2px 2px red;
-    outline: none;
+.box {
+    border: 2px double red;
+    color: red;
+    padding: 20px;
 }
