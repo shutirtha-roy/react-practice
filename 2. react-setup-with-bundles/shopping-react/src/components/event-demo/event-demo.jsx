@@ -7,8 +7,8 @@ export function EventDemo() {
 
     return(
         <div className="container-fluid m-2 p-4">
-            <form class="w-50" onSubmit={SubmitClicked}>
-                User Name : <input type="text" name="Username" /><button type="submit">Submit</button>
+            <form class="w-50" onSubmit={SubmitClicked} noValidate>
+                Email : <input type="text" name="Username" /><button type="submit">Submit</button>
             </form>
         </div>
     )
