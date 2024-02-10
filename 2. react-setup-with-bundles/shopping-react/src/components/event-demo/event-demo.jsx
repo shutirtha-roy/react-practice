@@ -1,13 +1,17 @@
 export function EventDemo() {
 
-    function InsertClick(...args) {
-        var [msg, id, event] = args;
-        document.write(`${msg} <br> ${id} <br> ${event}`);
+    function ContainerClick() {
+        alert("Container Clicked");
+    }
+
+    function ButtonClick(e) {
+        alert("Button Click");
+        //e.stopPropagation();
     }
 
     return(
-        <div className="container-fluid">
-            <button id="btnInsert" onClick={(e) => InsertClick('Welcome', 10, e)} className="btn btn-success mt-4">Insert</button>
+        <div className="container-fluid m-2" onClick={ContainerClick}>
+            <button id="btnInsert" onClick={ButtonClick} className="btn btn-success mt-4">Insert</button>
         </div>
     )
 }
