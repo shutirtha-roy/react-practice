@@ -1,15 +1,24 @@
+import axios from "axios";
+import { useState } from "react";
+
 export function EventDemo() {
 
-    function SubmitClicked(e) {
-        alert('Later we will post data to API');
-        e.preventDefault();
+    const [styleObj, setStyleObj] = useState({position: 'absolute', top: '', left: ''});
+
+    function GetPosition(e) {
+        setStyleObj({
+            position: 'absolute',
+            top: e.clientY + 'px',
+            left: e.clientX + 'px'
+        })
     }
 
     return(
-        <div className="container-fluid m-2 p-4">
-            <form class="w-50" onSubmit={SubmitClicked} noValidate>
-                Email : <input type="text" name="Username" /><button type="submit">Submit</button>
-            </form>
+        <div onMouseMove={GetPosition} className="container-fluid m-2 p-4">
+            <div style={{height: '1000px'}}>
+                <p>Move mouse pointer to test</p>
+            </div>
+            <img style={styleObj} width="50" height="50" src="flag.gif" />
         </div>
     )
 }
