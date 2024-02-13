@@ -6,11 +6,12 @@ import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/bootstrap-icons/font/bootstrap-icons.css';
 import * as bootstrap from "bootstrap";
+import { Dashboard } from './components/dashboard/dashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Dashboard />
   </React.StrictMode>
 );
 
