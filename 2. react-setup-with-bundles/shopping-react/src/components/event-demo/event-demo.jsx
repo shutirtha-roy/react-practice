@@ -1,24 +1,42 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function EventDemo() {
 
-    const [styleObj, setStyleObj] = useState({position: 'absolute', top: '', left: ''});
+    const [msg, setMsg] = useState('');
+    const [progressClass, setProgressClass] = useState('');
+    const [progressStyle, setProgressStyle] = useState({width: '0%'});
 
-    function GetPosition(e) {
-        setStyleObj({
-            position: 'absolute',
-            top: e.clientY + 'px',
-            left: e.clientX + 'px'
-        })
+    function VerifyPassword(e) {
+        if(e.target.value.match(/(?=.*[A-Z])\w{4,15}/)) {
+            setMsg('Strong Password');
+            setProgressClass('bg-success');
+            setProgressStyle({width: '100%'});
+
+        } else {
+            if (e.target.value.length < 4) {
+                setMsg('Poor Password');
+                setProgressClass('bg-danger');
+                setProgressStyle({width: '30%'});
+            } else {
+                setMsg('Weak Password');
+                setProgressStyle({width: '60%'});
+            }
+        }
     }
 
     return(
-        <div onMouseMove={GetPosition} className="container-fluid m-2 p-4">
-            <div style={{height: '1000px'}}>
-                <p>Move mouse pointer to test</p>
-            </div>
-            <img style={styleObj} width="50" height="50" src="flag.gif" />
+        <div className="container-fluid m-2 p-4">
+           <h2>Register User</h2>
+           <dl className="w-25">
+                <dt>Password</dt>
+                <dd><input type="password" className="form-control" onKeyUp={VerifyPassword} /></dd>
+                <dd className="progress">
+                    <div className={`progress-bar progress-bar-stripped progress-bar-animated ${progressClass}`} style={{width: progressStyle}}>
+                        {msg}
+                    </div>
+                </dd>
+           </dl>
         </div>
     )
 }
