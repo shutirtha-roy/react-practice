@@ -13,11 +13,12 @@ import { NasaAPI } from './components/nasa-api/nasa-api';
 import { TwoWayBinding } from './components/two-way-binding/two-way-binding';
 import { StyleDemo } from './components/style-demp/style-demo';
 import { EventDemo } from './components/event-demo/event-demo';
+import { TimerDemo } from './components/timer-demo/timer-demo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EventDemo />
+    <TimerDemo />
   </React.StrictMode>
 );
 
