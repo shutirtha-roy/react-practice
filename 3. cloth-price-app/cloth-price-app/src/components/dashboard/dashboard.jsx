@@ -4,12 +4,12 @@ import "./dashboard.css";
 
 export function Dashboard() {
 
-    const [product, setProduct] = useState([]);
+    const [productList, setProductList] = useState([]);
 
     function LoadProduct() {
         axios.get("product.json").then((response) => {
-            console.log(response);
-            setProduct(response.data);
+            console.log('IT IS HERE');
+            setProductList(response.data);
         }).catch((ex) => {
             console.log(ex);
         });
@@ -17,11 +17,17 @@ export function Dashboard() {
 
     useEffect(() => {
         LoadProduct();
+        console.log("PRODUCT LIST", productList)
     }, []);
 
     return(
         <div className="container-fluid">
-            
+            <h2>Product List</h2>
+            <ol>
+                {
+                    productList.map(product => <li key={product.name}>{product.name}  ${product.price} ({product.category})</li>)
+                }
+            </ol>
         </div>
     )
 
