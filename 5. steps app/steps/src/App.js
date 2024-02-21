@@ -12,19 +12,19 @@ export default function App() {
 
   function handlePrevious() {
     if (step > 1) {
-      setStep(step - 1);
+      setStep((curStep) => curStep - 1);
     }
   }
 
   function handleNext() {
     if (step < 3) {
-      setStep(step + 1);
+      setStep((curStep) => curStep + 1);
     }
   }
 
   return (
-      <div>
-        <button className="close" onClick={() => setIsOpen(!isOpen)}>&times;</button>
+      <>
+        <button className="close" onClick={() => setIsOpen((is) => !is)}>&times;</button>
 
         { isOpen && (
           <div className="steps">
@@ -44,6 +44,6 @@ export default function App() {
               </div>
           </div>
         )}
-    </div>
+    </>
   )
 }
